@@ -1,0 +1,58 @@
+#页面标题
+PageTitle: "菜单主界面"
+PageText: "这是菜单的主页,您想进行什么操作呢?"
+#该菜单下所有的按钮,按钮类型在config.yml 记得Button1、Button2这样按顺序写下去
+Button1:
+  type: 1
+  name: "点我执行指令"
+  texture: "textures/ui/filledStar.png"
+  money: 0
+  cmd:
+    - "givemoney %p 100@op"  #op为控制台命令,player为玩家执行指令
+    - "say 我刚才按下了一个菜单按键!@player"
+  permission: "true"
+Button2:
+  type: 2
+  name: "点我输入并执行指令"
+  texture: "无"
+  tip: "请输入内容"
+  text: "请您输入内容!"
+  money: 0
+  cmd:
+    - "givemoney %p 100@op"  #op为控制台命令,player为玩家执行指令
+    - "say 我刚才输入了%i@player"
+  permission: "true"
+Button3:
+  type: 3
+  name: "点我选择并执行指令"
+  texture: "无"
+  tip: "请通过选项来选择内容"
+  list:
+    - "选项a"
+    - "选项n"
+  money: 0
+  cmd:
+    - "givemoney %p 100@op"
+    - "say 我刚才选择了%i@player"
+  permission: "true"
+Button4:
+  type: 4
+  name: "点我滑动选择并执行指令"
+  texture: "无"
+  tip: "请通过滑动来选择内容"
+  min: 1
+  max: 10
+  money: 0
+  cmd:
+    - "givemoney %p %i@op"
+    - "say 我刚才滑动选择了并给了自己金币:%i@player"
+  permission: "true"
+Button5:
+  type: 5
+  name: "点我确定或取消执行指令"
+  texture: "无"
+  tip: "你要确定还是取消呢?点击下方的按钮做出你的决定吧!"
+  money: 0
+  cmd:
+    - "givemoney %p 100@op"
+  permission: "true"
