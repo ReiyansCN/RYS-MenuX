@@ -1,6 +1,6 @@
 name: RYSMenuX
 main: cn.reiyans.RYSMenuX.RYSMenuXMain
-version: "1.0.0"
+version: "1.0.1"
 api: ["1.0.9"]
 author: Reiyans
 load: POSTWORLD

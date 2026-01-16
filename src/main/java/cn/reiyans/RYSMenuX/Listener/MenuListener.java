@@ -7,6 +7,7 @@ import cn.nukkit.event.player.PlayerDropItemEvent;
 import cn.nukkit.event.player.PlayerInteractEvent;
 import cn.nukkit.event.player.PlayerLocallyInitializedEvent;
 import cn.nukkit.item.Item;
+import cn.nukkit.nbt.tag.CompoundTag;
 import cn.reiyans.RYSMenuX.Menu.MenuForm;
 import cn.reiyans.RYSMenuX.RYSMenuXMain;
 
@@ -27,17 +28,19 @@ public class MenuListener implements Listener {
     private void PlayerInteractEntityEvent(PlayerInteractEvent event){
         Player player = event.getPlayer();
         if(RYSMenuXMain.isItemSwitcher()){
-            if(player.getInventory().getItemInHand().getNamedTag().contains("menux")){
+            CompoundTag tag = player.getInventory().getItemInHand().getNamedTag();
+            if(tag!= null && tag.contains("menux")){
                 MenuForm.showUI(player, RYSMenuXMain.getMenus().get("main"),"main");
             }
         }
     }
 
     @EventHandler
-    private void PlayerInteractEntityEvent(PlayerDropItemEvent event){
+    private void PlayerDropEvent(PlayerDropItemEvent event){
         Player player = event.getPlayer();
         if(RYSMenuXMain.isItemSwitcher()){
-            if(!RYSMenuXMain.isItemIsDrop() && player.getInventory().getItemInHand().getNamedTag().contains("menux")){
+            CompoundTag tag = player.getInventory().getItemInHand().getNamedTag();
+            if(tag != null && !RYSMenuXMain.isItemIsDrop() && player.getInventory().getItemInHand().getNamedTag().contains("menux")){
                 event.setCancelled();
                 player.sendMessage("§c暂时无法丢弃 §e"+RYSMenuXMain.getItemName()+" §c!");
             }
